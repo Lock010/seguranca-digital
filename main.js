@@ -2,17 +2,31 @@ const numeroSenha = document.querySelector('.parametro-senha__texto');
 let tamanhoSenha = 12;
 numeroSenha.textContent = tamanhoSenha;
 const letrasMaiusculas = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
-const letrasMinusculas = 'abcdefghijklmnopqrstuvxywz';
+const letrasMinusculas = 'abcdefghijklmnopqrstuvxyz';
 const numeros = '0123456789';
 const simbolos = '!@%*?#¨&+-.';
 const botoes = document.querySelectorAll('.parametro-senha__botao');
 const campoSenha = document.querySelector('#campo-senha');
 const checkbox = document.querySelectorAll('.checkbox');
 const forcaSenha = document.querySelector('.forca');
+const botaoGerar = document.querySelector('#botao-gerar');
+const entropiaElemento = document.querySelector('.entropia');
 
 
 botoes[0].onclick = diminuiTamanho;
+
+
 botoes[1].onclick = aumentaTamanho;
+
+botaoGerar.onclick = geraSenha;
+
+// Adicionar event listeners aos checkboxes
+checkbox.forEach(cb => {
+    cb.addEventListener('change', geraSenha);
+});
+
+// Inicializar com uma senha ao carregar
+window.addEventListener('load', geraSenha);
 
 function diminuiTamanho(){
     if (tamanhoSenha > 1){
@@ -58,7 +72,6 @@ function geraSenha() {
         alert('Selecione ao menos um tipo de caractere para gerar a senha.');
         return;
     }
-    const entropiaElemento = document.querySelector('.entropia');
     if (alfabeto.length > 0) {
         const tamanhoAlfabeto = alfabeto.length;
         const entropia = tamanhoSenha * Math.log2(tamanhoAlfabeto);
@@ -66,12 +79,18 @@ function geraSenha() {
         const segundosPorDia = 60 * 60 * 24;
         const dias = Math.floor(Math.pow(2, entropia) / (tentativasPorSegundo * segundosPorDia));
         if (!Number.isFinite(dias) || dias > 1e12) {
-            entropiaElemento.textContent = 'Um computador pode levar mais de 1.000.000.000.000 dias';
+            if (entropiaElemento) {
+                entropiaElemento.textContent = 'Um computador pode levar mais de 1.000.000.000.000 dias';
+            }
         } else {
-            entropiaElemento.textContent = 'Um computador pode levar até ' + dias + ' dias';
+            if (entropiaElemento) {
+                entropiaElemento.textContent = 'Um computador pode levar até ' + dias + ' dias';
+            }
         }
     } else {
-        entropiaElemento.textContent = '';
+        if (entropiaElemento) {
+            entropiaElemento.textContent = '';
+        }
     }
     
     let senha = '';

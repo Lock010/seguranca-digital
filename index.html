@@ -33,21 +33,25 @@
 <div class="parametro-senha">
     <h4 class="parametro-senha__titulo">Características da senha</h4>
     <div class="parametro-senha-checkbox">
-        <input name="maiusculo" type="checkbox" class="checkbox" checked>
+        <input id="maiusculo" name="maiusculo" type="checkbox" class="checkbox" checked>
         <label for="maiusculo">Letras maiúsculas</label>
     </div>
     <div class="parametro-senha-checkbox">
-        <input name="minusculo" type="checkbox" class="checkbox">
+        <input id="minusculo" name="minusculo" type="checkbox" class="checkbox">
         <label for="minusculo">Letras minúsculas</label>
     </div>
     <div class="parametro-senha-checkbox">
-        <input name="numero" type="checkbox" class="checkbox">
+        <input id="numero" name="numero" type="checkbox" class="checkbox">
         <label for="numero">Números</label>
     </div>
     <div class="parametro-senha-checkbox">
-        <input name="simbolo" type="checkbox" class="checkbox">
+        <input id="simbolo" name="simbolo" type="checkbox" class="checkbox">
         <label for="simbolo">Símbolos</label>
     </div>
+</div>
+<div class="parametro-senha">
+    <h4 class="parametro-senha__titulo">Entropia</h4>
+    <p class="entropia">Selecione opções para calcular a entropia</p>
 </div>
 <div class="parametro-senha">
     <h4 class="parametro-senha__titulo">Força da senha</h4>
@@ -58,6 +62,9 @@
         <p>Média</p>
         <p>Forte</p>
     </div>
+</div>
+<div class="parametro-senha">
+    <button class="parametro-senha__botao-gerar" id="botao-gerar">Gerar Senha</button>
 </div>
             </div>
         </div>
