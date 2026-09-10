@@ -1,7 +1,7 @@
 /*
 INTEGRANTES:
-Erick Coelho dos Santos
-Willian Jaccezim
+Erick Coelho dos Santos 9
+Willian Jaccezim 40
 TURMA: 3ª Série K
 */
 const numeroSenha = document.querySelector('.parametro-senha__texto');
